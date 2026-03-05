@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any 
     stages {
         stage('Build') {
             steps {
@@ -10,6 +10,11 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                }
+            }
             steps {
                 echo 'Test stage'
                 sh 'npm test'

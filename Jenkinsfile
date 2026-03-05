@@ -4,6 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 cleanWs()
+                sh 'npm install'
+                sh 'npm run build'
                 echo 'Build stage'
             }
         }

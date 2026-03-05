@@ -1,10 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-        BUILD_FILE_NAME = 'laptop.txt'
-    }
-
     stages {
         stage('Build') {
             steps {
@@ -15,6 +10,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Test stage'
+                sh 'test -f build/index.html'
+                sh 'npm test'
             }
         }
     }
